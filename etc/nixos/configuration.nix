@@ -12,19 +12,15 @@
     ./hardware-configuration.nix
   ];
 
-  time = {
-    timeZone = "Europe/Dublin";
-  };
+  time.timeZone = "Europe/Dublin";
 
   users = {
     mutableUsers = true;
     defaultUserShell = pkgs.zsh;
-    users = {
-      fenrir = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "doas" "docker" "networkmanager" ];
-        initialPassword = "password";
-      };
+    users.fenrir = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "doas" "docker" "networkmanager" ];
+      initialPassword = "password";
     };
   };
 
