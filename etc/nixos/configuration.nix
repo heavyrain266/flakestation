@@ -9,6 +9,7 @@
     ./modules/security
     ./modules/services
     ./modules/software
+    ./modules/services/lowLatency.nix
     ./hardware-configuration.nix
   ];
 
@@ -27,12 +28,11 @@
   nix = {
     allowedUsers = [ "root" "fenrir" ];
     trustedUsers = [ "root" "fenrir" ];
+    distributedBuilds = true;
     autoOptimiseStore = true;
     checkConfig = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
+    gc.automatic = true;
+    gc.dates = "weekly";
     optimise.automatic = true;
     useSandbox = false;
   };

@@ -2,19 +2,19 @@
 
 {
 
-  nixpkgs = {
-    config.allowUnfree = true;
-  };
+  nixpkgs.config.allowUnfree = true;
 
   environment = {
     systemPackages = with pkgs; [
       git
+      sbt
       wget
       curl
+      dotty
+      metals
       cachix
       nodejs
       kakoune
-      alacritty
       alsa-utils
       gdk_pixbuf
       gtk_engines
@@ -32,10 +32,11 @@
   fonts.fonts = with pkgs; [
     dina-font
     noto-fonts
+    julia-mono
     cascadia-code
     noto-fonts-cjk
     noto-fonts-emoji
-    # (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono"; })
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
   programs = {

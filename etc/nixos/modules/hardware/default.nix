@@ -14,7 +14,7 @@ in
   environment.systemPackages = [ nvidia-offload ];
 
   networking = {
-    hostName = "nifleheim";
+    hostName = "niflheim";
     networkmanager.enable = true;
   };
 

@@ -1,0 +1,1 @@
+/home/fenrir/.config/kak/plugins/tokyonight.kak/colors/tokyonight-storm.kak

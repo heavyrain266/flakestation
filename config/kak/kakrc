@@ -1,0 +1,67 @@
+# Auto install plug
+evaluate-commands %sh{
+    plugins="$kak_config/plugins"
+    mkdir -p "$plugins"
+    [ ! -e "$plugins/plug.kak" ] && \
+    git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
+    printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
+}
+plug "andreyorst/plug.kak" noload
+
+# Plugins
+plug "alexherbo2/auto-pairs.kak" config %{
+    enable-auto-pairs
+} defer auto-pairs  %{
+    set-option global auto_pairs ( ) { } [ ] '"' '"' "'" "'" ` ` “ ” ‘ ’ « » ‹ ›
+}
+
+plug "kak-lsp/kak-lsp" do %{
+    cargo install --locked --force --path .
+}
+
+plug "eraserhd/parinfer-rust" do %{
+    cargo install --force --path .
+} config %{
+    hook global WinSetOption filetype=(clojure|fennel|yuck) %{
+        parinfer-enable-window -smart
+    }
+}
+
+plug "enricozb/tabs.kak" config %{
+    set-option global modelinefmt_tabs '%val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}}'
+    map global normal ^ q
+    map global normal <a^> Q
+    map global normal q b
+    map global normal Q B
+    map global normal <a-q> <a-b>
+    map global normal <a-Q> <a-B>
+
+    map global normal b ': enter-user-mode tabs<ret>' -docstring 'tabs'
+    map global normal B ': enter-user-mode -lock tabs<ret>' -docstring 'tabs (lock)'
+}
+
+plug "nightfall-theme/nightfall.kak" config %{
+    colorscheme nightfall
+}
+nightfall-show-whitespaces
+
+# External config!
+define-command load -params 2 -hidden %{
+  try %{
+      source "%val{config}/%arg{1}/%arg{2}.kak"
+  }
+}
+
+# modules
+load module lsp
+load module hooks
+load module options
+load module mappings
+load module close-tags
+
+# Filetypes
+load filetype lua
+load filetype json
+load filetype ocaml
+load filetype scala
+load filetype fsharp
