@@ -8,8 +8,7 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec -a "$0" "$@"
   '';
-in
-{
+in {
   environment.systemPackages = [ nvidia-offload ];
 
   networking = {
@@ -32,10 +31,7 @@ in
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        rocm-opencl-icd
-        rocm-opencl-runtime
-      ];
+      extraPackages = with pkgs; [ rocm-opencl-icd rocm-opencl-runtime ];
     };
 
     bluetooth = {
@@ -44,7 +40,7 @@ in
     };
 
     pulseaudio.enable = false;
-    video.hidpi.enable = false;
+    video.hidpi.enable = true;
     cpu.amd.updateMicrocode = true;
   };
 }

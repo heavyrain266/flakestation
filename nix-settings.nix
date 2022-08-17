@@ -31,7 +31,7 @@
 
   settings = {
     accept-flake-config = true;
-    allowed-users = [ "shadow" "meems" ];
+    allowed-users = [ "shadow" ];
     auto-optimise-store = true;
     max-jobs = "auto";
     sandbox = false;

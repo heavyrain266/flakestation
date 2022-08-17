@@ -15,7 +15,6 @@
 
     # Followers
     nixpkgs.follows = "nixpkgs-unstable";
-    home.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home, ... }@inputs:
@@ -34,10 +33,7 @@
 
     in {
       nixosConfigurations.ragnarok =
-        import ./nixos/ragnarok { inherit config nixpkgs inputs; };
-
-      homeConfigurations.shadow =
-        import ./home { inherit config nixpkgs home inputs; };
+        import ./hosts/ragnarok { inherit config nixpkgs inputs; };
 
       ragnarok = self.nixosConfigurations.ragnarok.config.system.build.toplevel;
     };
