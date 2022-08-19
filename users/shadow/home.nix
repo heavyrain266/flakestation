@@ -23,15 +23,10 @@
       libnotify
 
       # Utils
-      manix
       nixfmt
       rnix-lsp
       nix-direnv
       tree-sitter
-      rust-analyzer
-
-      # Veloren
-      airshipper
     ];
 
     stateVersion = "22.11";

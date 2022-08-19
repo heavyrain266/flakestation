@@ -24,6 +24,9 @@
       gsettings-desktop-schemas
     ];
     pathsToLink = [ "/libexec" ];
+
+    # Allow VSCode to run natively on Wayland
+    sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
   fonts.fonts = with pkgs; [

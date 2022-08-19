@@ -18,5 +18,6 @@
     dbus.enable = true;
     openssh.enable = true;
     getty.autologinUser = "shadow";
+    gnome.gnome-keyring.enable = true;
   };
 }

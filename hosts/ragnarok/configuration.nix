@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
   ];
 
-  time.timeZone = "Europe/Dublin";
+  time.timeZone = "Europe/Amsterdam";
 
   users = {
     mutableUsers = true;
@@ -19,7 +19,7 @@
     users.shadow = {
       isNormalUser = true;
       extraGroups = [ "wheel" "doas" "docker" "networkmanager" ];
-      initialPassword = "password";
+      initialPassword = "fs";
     };
   };
 
