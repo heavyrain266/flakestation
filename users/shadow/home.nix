@@ -34,7 +34,8 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib ]);
+    package = pkgs.vscode.fhsWithPackages
+      (ps: with ps; [ rustup zlib openssl pkgconfig ]);
   };
 
   programs.home-manager.enable = true;
